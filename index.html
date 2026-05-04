@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mother's Day Planner — WOMBS 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--sage:#6B8F67;--sage-mid:#8FAD8B;--sage-light:#C4D9C1;--sage-pale:#EBF2EA;--sage-deep:#4D6B4A;--pink:#E8758A;--pink-mid:#F0A0B0;--pink-pale:#FCE8EC;--pink-deep:#C9566A;--cream:#FBF7F2;--cream-warm:#F5EDE3;--mid:#5A5A5A;--soft:#9A9A9A;--white:#FFFFFF;--ink-soft:#2E2E2E;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Space Grotesk',sans-serif;color:var(--ink-soft);overflow-x:hidden;}
+.hero{position:relative;background:linear-gradient(160deg,var(--sage-pale) 0%,var(--pink-pale) 55%,var(--cream-warm) 100%);padding:52px 24px 44px;overflow:hidden;z-index:1;border-bottom:2px solid var(--sage-light);}
+.hero-ring{position:absolute;width:320px;height:320px;border-radius:50%;border:60px solid rgba(232,117,138,0.08);top:-100px;right:-100px;}
+.hero-ring-2{position:absolute;width:200px;height:200px;border-radius:50%;border:40px solid rgba(107,143,103,0.1);bottom:-60px;left:-40px;}
+.wombs-logo{display:inline-block;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--sage);border:1.5px solid var(--sage-light);padding:6px 16px;border-radius:4px;margin-bottom:24px;background:white;position:relative;}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-bottom:12px;position:relative;}
+.hero-headline{position:relative;margin-bottom:6px;}
+.hero-headline .line1{font-family:'Playfair Display',serif;font-size:clamp(38px,10vw,66px);font-weight:900;font-style:italic;line-height:0.95;color:var(--sage-deep);display:block;letter-spacing:-1px;}
+.hero-headline .line2{font-family:'Playfair Display',serif;font-size:clamp(38px,10vw,66px);font-weight:900;font-style:italic;line-height:0.95;color:var(--pink);display:block;letter-spacing:-1px;}
+.hero-address{margin-top:22px;padding:16px 18px;background:rgba(255,255,255,0.78);border:1.5px solid var(--sage-light);border-radius:10px;position:relative;}
+.hero-address strong.label{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);margin-bottom:7px;font-weight:600;}
+.hero-address p{font-size:13.5px;line-height:1.7;color:var(--mid);}
+.hero-address p strong{color:var(--ink-soft);font-size:13.5px;}
+.hero-cities{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;position:relative;}
+.city-chip{background:white;border:1px solid var(--sage-light);color:var(--sage);font-size:11px;font-weight:500;padding:5px 12px;border-radius:20px;}
+.sentiment-bar{background:linear-gradient(135deg,var(--sage-pale),var(--pink-pale));padding:26px 24px;border-bottom:1.5px solid var(--pink-mid);position:relative;z-index:1;}
+.sentiment-bar p{font-family:'Playfair Display',serif;font-size:15.5px;font-style:italic;color:var(--sage-deep);line-height:1.65;}
+.sentiment-bar p strong{color:var(--pink-deep);font-style:normal;}
+.pass-on{background:#FFF9C4;margin:22px 20px 0;padding:18px 20px 18px 24px;border-radius:4px;font-size:13px;line-height:1.7;color:#4A3800;box-shadow:3px 4px 0px rgba(0,0,0,0.09);transform:rotate(-0.3deg);position:relative;z-index:1;border-left:4px solid #E6C200;}
+.pass-on::before{content:'📌';position:absolute;top:-13px;left:18px;font-size:20px;}
+.section-label{display:flex;align-items:center;gap:12px;padding:36px 20px 16px;position:relative;z-index:1;}
+.section-label-line{flex:1;height:1px;background:var(--sage-light);}
+.section-label-text{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--sage);white-space:nowrap;}
+.section-title{padding:0 20px 20px;position:relative;z-index:1;}
+.section-title h2{font-family:'Playfair Display',serif;font-size:clamp(26px,6vw,38px);font-weight:700;line-height:1.1;color:var(--sage-deep);}
+.section-title h2 em{font-style:italic;color:var(--pink);}
+.section-title p{font-size:13px;color:var(--mid);margin-top:8px;line-height:1.6;}
+.city-nav-wrap{padding:0 16px 20px;position:relative;z-index:1;overflow-x:auto;scrollbar-width:none;}
+.city-nav-wrap::-webkit-scrollbar{display:none;}
+.city-nav{display:flex;gap:8px;width:max-content;}
+.city-btn{background:var(--white);border:1.5px solid var(--sage-light);color:var(--sage-deep);padding:9px 18px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s ease;font-family:'Space Grotesk',sans-serif;white-space:nowrap;}
+.city-btn.active{background:var(--sage);border-color:var(--sage);color:white;}
+.city-btn:hover:not(.active){border-color:var(--pink);color:var(--pink);}
+.city-panel{display:none;padding:0 16px;position:relative;z-index:1;}
+.city-panel.active{display:block;}
+.r-card{background:var(--white);border-radius:12px;margin-bottom:14px;overflow:hidden;border:1.5px solid var(--sage-light);transition:transform 0.2s,box-shadow 0.2s;}
+.r-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,143,103,0.12);}
+.r-card-stripe{display:flex;align-items:stretch;}
+.r-card-number{width:44px;background:var(--sage-pale);border-right:1.5px solid var(--sage-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.r-card-number span{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;font-style:italic;color:var(--sage);writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);}
+.r-card-body{padding:16px 16px 14px;flex:1;}
+.r-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px;}
+.r-tag{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:3px;}
+.r-tag.sage{background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-light);}
+.r-tag.pink{background:var(--pink-pale);color:var(--pink-deep);border:1px solid var(--pink-mid);}
+.r-tag.cream{background:var(--cream-warm);color:var(--mid);border:1px solid #E0D5C8;}
+.r-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--sage-deep);line-height:1.15;margin-bottom:3px;}
+.r-sub{font-size:11px;color:var(--soft);font-weight:500;margin-bottom:9px;}
+.r-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px;}
+.r-footer{display:flex;gap:8px;flex-wrap:wrap;}
+.r-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:7px 14px;border-radius:6px;text-decoration:none;font-family:'Space Grotesk',sans-serif;transition:all 0.15s;background:var(--sage-pale);color:var(--sage-deep);border:1.5px solid var(--sage-light);}
+.r-btn:hover{background:var(--sage-light);}
+.also-wrap{margin:8px 0 4px;border-top:1.5px dashed var(--sage-light);padding-top:16px;}
+.also-label{display:inline-flex;align-items:center;gap:7px;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:12px;}
+.also-label::after{content:'';display:block;width:40px;height:1px;background:var(--pink-mid);}
+.also-card{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:white;border-radius:10px;margin-bottom:8px;border:1px solid var(--sage-light);transition:transform 0.15s;}
+.also-card:hover{transform:translateX(2px);}
+.also-dot{width:28px;height:28px;border-radius:50%;background:var(--sage-pale);border:1.5px solid var(--sage-light);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;}
+.also-dot.pink-dot{background:var(--pink-pale);border-color:var(--pink-mid);}
+.also-content{flex:1;}
+.also-name{font-size:14px;font-weight:600;color:var(--sage-deep);margin-bottom:2px;line-height:1.2;}
+.also-meta{font-size:10px;color:var(--soft);margin-bottom:4px;}
+.also-desc{font-size:12px;color:var(--mid);line-height:1.5;margin-bottom:8px;}
+.also-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.also-btn{font-size:10px;font-weight:600;padding:5px 10px;border-radius:5px;text-decoration:none;font-family:'Space Grotesk',sans-serif;transition:opacity 0.15s;background:var(--sage-pale);color:var(--sage-deep);border:1px solid var(--sage-light);}
+.also-btn:hover{opacity:0.8;}
+.deco-divider{text-align:center;padding:28px 20px 8px;font-size:16px;letter-spacing:10px;color:var(--sage-light);position:relative;z-index:1;}
+.quotes-section{padding:8px 20px 0;position:relative;z-index:1;}
+.quotes-header{margin-bottom:14px;}
+.quotes-header h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--sage-deep);}
+.quotes-header p{font-size:12px;color:var(--soft);margin-top:3px;}
+.quotes-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;}
+.quotes-scroll::-webkit-scrollbar{display:none;}
+.quote-card{flex:0 0 260px;background:white;border-radius:14px;padding:20px 16px;border:1.5px solid var(--sage-light);position:relative;overflow:hidden;}
+.quote-card::before{content:'"';position:absolute;font-family:'Playfair Display',serif;font-size:110px;line-height:1;color:rgba(107,143,103,0.07);top:-10px;left:6px;font-style:italic;}
+.quote-card.sage-card{border-top:3px solid var(--sage);}
+.quote-card.pink-card{border-top:3px solid var(--pink);background:var(--pink-pale);border-color:var(--pink-mid);}
+.quote-card p{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--sage-deep);line-height:1.6;margin-bottom:12px;position:relative;}
+.quote-card .q-attr{font-family:'Space Grotesk',sans-serif;font-style:normal;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage-mid);}
+.quote-card.pink-card p{color:var(--pink-deep);}
+.quote-card.pink-card .q-attr{color:var(--pink);}
+.selfcare-wrap{margin:8px 16px 0;position:relative;z-index:1;}
+.selfcare-header{background:linear-gradient(135deg,var(--pink),var(--pink-deep));border-radius:12px 12px 0 0;padding:22px 20px 18px;color:white;}
+.selfcare-header h3{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;font-style:italic;margin-bottom:5px;}
+.selfcare-header p{font-size:12px;opacity:0.88;line-height:1.55;}
+.selfcare-grid{background:var(--pink-pale);border:1.5px solid var(--pink-mid);border-top:none;border-radius:0 0 12px 12px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sc-card{background:white;border-radius:10px;padding:14px 12px;border:1px solid var(--pink-mid);}
+.sc-icon{font-size:20px;margin-bottom:6px;display:block;}
+.sc-card h4{font-size:12px;font-weight:600;color:var(--sage-deep);margin-bottom:3px;}
+.sc-card p{font-size:11px;color:var(--mid);line-height:1.5;margin-bottom:9px;}
+.sc-btn{display:block;text-align:center;background:var(--pink);color:white;font-size:10px;font-weight:600;padding:6px 10px;border-radius:6px;text-decoration:none;letter-spacing:0.5px;text-transform:uppercase;transition:opacity 0.15s;}
+.sc-btn:hover{opacity:0.85;}
+.gifts-wrap{padding:8px 16px 0;position:relative;z-index:1;}
+.gifts-header{margin-bottom:14px;padding:0 4px;}
+.gifts-header h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--sage-deep);}
+.gifts-header p{font-size:12px;color:var(--soft);margin-top:3px;}
+.gifts-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;}
+.gifts-scroll::-webkit-scrollbar{display:none;}
+.gift-card{flex:0 0 150px;background:white;border-radius:12px;padding:16px 12px;border:1.5px solid var(--sage-light);text-align:left;}
+.gift-emoji{font-size:24px;margin-bottom:8px;display:block;}
+.gift-card h4{font-size:12px;font-weight:600;color:var(--sage-deep);margin-bottom:4px;line-height:1.2;}
+.gift-card p{font-size:11px;color:var(--mid);line-height:1.45;}
+.gift-card.pink-gift{border-color:var(--pink-mid);background:var(--pink-pale);}
+.gift-card.sage-gift{border-color:var(--sage-light);background:var(--sage-pale);}
+.contact-wrap{margin:0 16px;background:linear-gradient(135deg,var(--sage-pale),var(--pink-pale));border:1.5px solid var(--sage-light);border-radius:16px;padding:28px 22px;position:relative;z-index:1;overflow:hidden;}
+.contact-wrap::before{content:'✦';position:absolute;font-size:100px;color:rgba(107,143,103,0.06);bottom:-10px;right:10px;}
+.contact-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:10px;}
+.contact-wrap h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--sage-deep);line-height:1.25;margin-bottom:8px;}
+.contact-wrap h3 em{font-style:italic;color:var(--pink);}
+.contact-wrap > p{font-size:13px;color:var(--mid);line-height:1.65;margin-bottom:20px;}
+.contact-form{display:flex;flex-direction:column;gap:10px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-field{display:flex;flex-direction:column;gap:4px;}
+.form-field label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--sage);}
+.form-field input,.form-field select,.form-field textarea{background:white;border:1.5px solid var(--sage-light);border-radius:8px;padding:10px 12px;font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--ink-soft);outline:none;transition:border-color 0.15s;width:100%;}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(107,143,103,0.1);}
+.form-field textarea{resize:none;height:80px;}
+.form-submit{display:block;width:100%;background:linear-gradient(135deg,var(--sage),var(--sage-deep));color:white;border:none;border-radius:8px;padding:14px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.5px;cursor:pointer;transition:opacity 0.15s;margin-top:4px;}
+.form-submit:hover{opacity:0.88;}
+.form-note{font-size:10px;color:var(--soft);text-align:center;margin-top:8px;}
+.form-success{display:none;text-align:center;padding:20px;}
+.form-success h4{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--sage-deep);margin-bottom:8px;}
+.form-success p{font-size:13px;color:var(--mid);}
+.manifesto{margin:24px 16px 16px;position:relative;z-index:1;background:linear-gradient(150deg,var(--sage-pale) 0%,var(--pink-pale) 100%);border:1.5px solid var(--sage-light);border-radius:16px;padding:32px 24px;overflow:hidden;text-align:center;}
+.manifesto::before{content:'';position:absolute;width:200px;height:200px;border-radius:50%;border:40px solid rgba(232,117,138,0.08);top:-60px;right:-60px;}
+.manifesto-tag{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:14px;position:relative;}
+.manifesto h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;font-style:italic;color:var(--sage-deep);line-height:1.2;margin-bottom:10px;position:relative;}
+.manifesto h3 span{color:var(--pink);}
+.manifesto p{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:22px;position:relative;max-width:340px;margin-left:auto;margin-right:auto;}
+.manifesto-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;position:relative;}
+.manifesto-btn{display:inline-block;padding:11px 22px;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.3px;transition:opacity 0.15s;font-family:'Space Grotesk',sans-serif;}
+.manifesto-btn:hover{opacity:0.85;}
+.manifesto-btn.primary{background:var(--pink);color:white;}
+.manifesto-btn.secondary{background:white;color:var(--sage-deep);border:1.5px solid var(--sage-light);}
+footer{text-align:center;padding:20px 20px 40px;font-size:11px;color:var(--soft);line-height:1.8;position:relative;z-index:1;}
+footer a{color:var(--sage);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring-2"></div>
+  <div class="wombs-logo">WOMBS · Mother's Day 2026</div>
+  <div class="hero-eyebrow">May 9 &amp; 10, 2026</div>
+  <div class="hero-headline">
+    <span class="line1">The Mother's</span>
+    <span class="line2">Day Planner.</span>
+  </div>
+  <div class="hero-address">
+    <strong class="label">To: You. Yes, you.</strong>
+    <p>You shouldn't have to plan this day too. So here's your cheat sheet — screenshot it, forward it, drop it in the group chat. Hand it to your partner, your kids, your niece, your nephew — whoever loves you. Or use it yourself to plan something for your mom. Either way, <strong>consider it handled.</strong></p>
+  </div>
+  <div class="hero-cities">
+    <span class="city-chip">🌿 Bangalore</span>
+    <span class="city-chip">🌸 Delhi</span>
+    <span class="city-chip">🌊 Mumbai</span>
+    <span class="city-chip">🏙️ Gurgaon</span>
+    <span class="city-chip">☕ Pune</span>
+    <span class="city-chip">☀️ Ahmedabad</span>
+    <span class="city-chip">🌴 Goa</span>
+  </div>
+</section>
+
+<div class="sentiment-bar">
+  <p>Mother's Day should be spent with <strong>people who love you.</strong> They should do the celebrating — and they shouldn't need reminding. We're here so you don't have to ask for it, plan it, or remind anyone it's happening. <strong>That's our job this weekend.</strong></p>
+</div>
+
+<div class="pass-on">
+  <strong>📋 Forward this to whoever needs a nudge.</strong><br>
+  Table options. Spa bookings. Gift ideas. Words for when they're out of them. Scroll, pick, act. She's been waiting long enough.
+</div>
+
+<div class="section-label"><span class="section-label-line"></span><span class="section-label-text">The Table</span><span class="section-label-line"></span></div>
+<div class="section-title">
+  <h2>Where to take <em>her</em> this weekend</h2>
+  <p>5 picks per city + bonus options. Call to book — these tables fill fast.</p>
+</div>
+
+<div class="city-nav-wrap">
+  <div class="city-nav">
+    <button class="city-btn active" onclick="showCity('bangalore',this)">🌿 Bangalore</button>
+    <button class="city-btn" onclick="showCity('delhi',this)">🌸 Delhi</button>
+    <button class="city-btn" onclick="showCity('mumbai',this)">🌊 Mumbai</button>
+    <button class="city-btn" onclick="showCity('gurgaon',this)">🏙️ Gurgaon</button>
+    <button class="city-btn" onclick="showCity('pune',this)">☕ Pune</button>
+    <button class="city-btn" onclick="showCity('ahmedabad',this)">☀️ Ahmedabad</button>
+    <button class="city-btn" onclick="showCity('goa',this)">🌴 Goa</button>
+  </div>
+</div>
+
+<!-- BANGALORE -->
+<div class="city-panel active" id="bangalore">
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>01</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Worth the Splurge</span></div><div class="r-name">JW Marriott Bengaluru</div><div class="r-sub">MG Road · Sunday Brunch Buffet</div><p class="r-desc">Handmade Gnocchi, Mughlai Gosht, Singaporean Chilli Crab, live Halwai-style Mithai counter. She goes in for brunch. She leaves feeling like someone finally made the whole day about her.</p><div class="r-footer"><a class="r-btn" href="tel:+918066789999">📞 080 6678 9999</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>02</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">Quiet Luxury</span></div><div class="r-name">CUR8 — Four Seasons Bengaluru</div><div class="r-sub">Embassy One · All-Day Dining</div><p class="r-desc">Quiet luxury. Thoughtful plating. Service that notices when her water glass is almost empty. For the mom who'd rather be unhurried than overwhelmed.</p><div class="r-footer"><a class="r-btn" href="tel:+918049450100">📞 080 4945 0100</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>03</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">Outdoor Brunch</span><span class="r-tag cream">Worth the Drive</span></div><div class="r-name">Terra — Mulberry Shades, Nandi Hills</div><div class="r-sub">Nandi Hills · Open-Air · Live Music</div><p class="r-desc">Fresh air, poolside views, live music, global cuisine. If she needs to actually breathe — not just feel okay — this is the one. Make a whole day of it.</p><div class="r-footer"><a class="r-btn" href="tel:+919480009480">📞 +91 94800 09480</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>04</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Lunch</span><span class="r-tag pink">Hot Mom Club</span></div><div class="r-name">Bastian Garden City</div><div class="r-sub">Whitefield · Sit-Down Lunch · ₹3,200</div><p class="r-desc">Hot Mom Club is back. Curated set menu, DIY wine cocktails, tarot readings, good music. For the mom who doesn't want a quiet lunch — she wants a moment.</p><div class="r-footer"><a class="r-btn" href="tel:+918048511700">📞 080 4851 1700</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>05</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Dinner</span><span class="r-tag cream">Comfort Food</span></div><div class="r-name">Shangri-La Bengaluru</div><div class="r-sub">Race Course Road · Asian + Indian</div><p class="r-desc">"Maa Ke Hath Ka Khana" section — Baigan Bharta, Maa Ki Dal, home-style Chicken Curry. The food she actually craves. Elevated, but familiar.</p><div class="r-footer"><a class="r-btn" href="tel:+918067998800">📞 080 6799 8800</a></div></div></div></div>
+  <div class="also-wrap"><div class="also-label">Also worth it this weekend</div>
+    <div class="also-card"><div class="also-dot">🍽</div><div class="also-content"><div class="also-name">Neo Kitchen — Hilton Bengaluru</div><div class="also-meta">Embassy Manyata · Mamma's Brunch · 12:30–4pm</div><p class="also-desc">Mother-child duos doing live culinary showcases of family recipes. Caricature artists, nail-paint stations, live music.</p><div class="also-btns"><a class="also-btn" href="tel:+918049626000">📞 080 4962 6000</a></div></div></div>
+    <div class="also-card"><div class="also-dot pink-dot">🥗</div><div class="also-content"><div class="also-name">The Market — Ritz-Carlton Bengaluru</div><div class="also-meta">Residency Road · Kids' Culinary Masterclass included</div><p class="also-desc">Maa Ki Daal, Maa Ke Haath Ka Matar Paneer — and a kids' masterclass where children cook dishes for their moms. The table that ends in hugs.</p><div class="also-btns"><a class="also-btn" href="tel:+918049148000">📞 080 4914 8000</a></div></div></div>
+    <div class="also-card"><div class="also-dot">🌿</div><div class="also-content"><div class="also-name">Caraway Kitchen — Conrad Bengaluru</div><div class="also-meta">Ulsoor Lake · Regional Indian · Four Live Open Kitchens</div><p class="also-desc">Kerala, Rajasthan and beyond across four open live kitchens. Personalised bouquets at the craft corner. Acoustic live performances throughout.</p><div class="also-btns"><a class="also-btn" href="tel:+918040006666">📞 080 4000 6666</a></div></div></div>
+    <div class="also-card"><div class="also-dot pink-dot">🌅</div><div class="also-content"><div class="also-name">Raj Pavilion — ITC Windsor</div><div class="also-meta">Vasanth Nagar · Victorian Glasshouse · ₹3,599+</div><p class="also-desc">Under a stunning Victorian glasshouse canopy. Live Maa Ke Haath Ka Paratha counter, Paneer Mirch Masala, Amritsari Machhi Curry.</p><div class="also-btns"><a class="also-btn" href="tel:+918022269898">📞 080 2226 9898</a></div></div></div>
+  </div>
+</div>
+
+<!-- DELHI -->
+<div class="city-panel" id="delhi">
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>01</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Iconic</span></div><div class="r-name">1911 — The Imperial</div><div class="r-sub">Janpath · Colonial Grand · Mimosa Bar</div><p class="r-desc">Indo-European brasserie, Buffet Extravaganza, Mimosa and Aperol Bar. If she's never been, this is the year. If she has — she'll want to go again.</p><div class="r-footer"><a class="r-btn" href="tel:+911123341234">📞 011 2334 1234</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>02</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">Rare Find</span><span class="r-tag cream">May 9–11</span></div><div class="r-name">Tamra — Shangri-La Eros</div><div class="r-sub">Connaught Place · Pathare Prabhu Cuisine · ₹3,200+</div><p class="r-desc">A mother-daughter chef duo cooking a rare regional cuisine for Mother's Day. Prawns Khadkhadle, Mutton Sukhe, Ukadiche Modak. A meal with a real story behind it.</p><div class="r-footer"><a class="r-btn" href="tel:+911141191919">📞 011 4119 1919</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>03</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Free Spa Voucher</span></div><div class="r-name">The Qube — Leela Palace</div><div class="r-sub">Chanakyapuri · Glass Architecture · Garden Views</div><p class="r-desc">Every mom gets a complimentary Rossini + spa vouchers on arrival. Indian, Japanese, European in one spread. She walks in for brunch, she walks out feeling taken care of.</p><div class="r-footer"><a class="r-btn" href="tel:+911139331234">📞 011 3933 1234</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>04</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Dinner</span><span class="r-tag cream">Fine Dining</span></div><div class="r-name">Nksha</div><div class="r-sub">New Delhi · Kashmiri Elevated</div><p class="r-desc">Stuffed Kashmiri Gucchi Kebab, Galouti, Tandoori Palak Paneer. Cocktails: Hawa Mahal, Khari Baoli. End on a Nutella Ghewar Tart. She'll talk about this one.</p><div class="r-footer"><a class="r-btn" href="tel:+919910441100">📞 +91 99104 41100</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>05</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Family Favourite</span></div><div class="r-name">Hyatt Regency Delhi Café</div><div class="r-sub">Bhikaji Cama Place · Buffet + Tambola at 1:30pm</div><p class="r-desc">Chaat station, live cocktail bar, global spread, and a lively Tambola round. Loud, joyful, generous. The kind of brunch that feels like home but better.</p><div class="r-footer"><a class="r-btn" href="tel:+911126791234">📞 011 2679 1234</a></div></div></div></div>
+  <div class="also-wrap"><div class="also-label">Also worth it this weekend</div>
+    <div class="also-card"><div class="also-dot pink-dot">🍸</div><div class="also-content"><div class="also-name">Monkey Bar — Vasant Kunj</div><div class="also-meta">Delhi · Lunch · Mom Alter Ego Cocktail Menu · ₹1,300++ for two</div><p class="also-desc">The Boss, The OG, The Chill One, The Drama Queen — cocktails built for every kind of mom. Live music, zero pretension. The fun pick of the weekend.</p><div class="also-btns"><a class="also-btn" href="tel:+919999580001">📞 +91 99995 80001</a></div></div></div>
+    <div class="also-card"><div class="also-dot">🌿</div><div class="also-content"><div class="also-name">Dos Delhi</div><div class="also-meta">Delhi · Dinner · Global with Creative Twists</div><p class="also-desc">Specially curated Mother's Day menu. For the mom who eats out often and wants something that actually surprises her for once.</p><div class="also-btns"><a class="also-btn" href="tel:+919205205700">📞 +91 92052 05700</a></div></div></div>
+  </div>
+</div>
+
+<!-- MUMBAI -->
+<div class="city-panel" id="mumbai">
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>01</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">Chef's Table</span><span class="r-tag cream">Most Memorable</span></div><div class="r-name">Trèsind Mumbai</div><div class="r-sub">Lower Parel · 10-Course Tasting Menu</div><p class="r-desc">Chef Sarfaraz Ahmed's 10-course regional India journey — Prawn &amp; Asparagus with Jeera Aloo espuma, Malabar paratha with jackfruit bharta. For the mom who loves food that tells a story.</p><div class="r-footer"><a class="r-btn" href="tel:+912261660001">📞 022 6166 0001</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>02</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch + Spa</span><span class="r-tag pink">Combo Deal</span></div><div class="r-name">JW Marriott Juhu</div><div class="r-sub">Juhu · International Brunch + Quan Spa · ₹3,400–4,600</div><p class="r-desc">Global brunch with live band and sparkling wine — plus 20% off a couple's massage at Quan Spa. A whole afternoon sorted in one call.</p><div class="r-footer"><a class="r-btn" href="tel:+912266931000">📞 022 6693 1000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>03</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Bellini Bar</span></div><div class="r-name">Cecconi's — Soho House Mumbai</div><div class="r-sub">Juhu · Italian · Live Band from 5:30pm</div><p class="r-desc">Grilled Lobster, Artichoke with chickpea gremolata, Pork Ribs, and a Bellini bar. For the mom who notices every detail and appreciates it quietly.</p><div class="r-footer"><a class="r-btn" href="tel:+912268091000">📞 022 6809 1000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>04</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">Multi-Gen Friendly</span></div><div class="r-name">MoMo Café — Courtyard Marriott</div><div class="r-sub">Andheri · Buffet Brunch · Kids Welcome</div><p class="r-desc">Live dim sum station, slow-roasted chicken, citrus &amp; detox bar, pasta station. Every mom gets a special giveaway. Unpretentious, generous, perfect for a big family table.</p><div class="r-footer"><a class="r-btn" href="tel:+912267215151">📞 022 6721 5151</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>05</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Dinner</span><span class="r-tag pink">Coastal · Different</span></div><div class="r-name">Sorozai</div><div class="r-sub">Mumbai · Goan Coastal · Sunset Cocktails</div><p class="r-desc">Goan Ponnos Tostada, Bombilachem Tawa Crunch, sunset cocktails. A coastal escape without leaving the city. For the mom who lives a little sideways.</p><div class="r-footer"><a class="r-btn" href="tel:+912200000000">📞 Find on Instagram @sorozai.mumbai</a></div></div></div></div>
+  <div class="also-wrap"><div class="also-label">Also worth it this weekend</div>
+    <div class="also-card"><div class="also-dot pink-dot">✨</div><div class="also-content"><div class="also-name">Opus — Four Seasons Mumbai</div><div class="also-meta">Worli · "A Recipe for Love" Sunday Brunch · ₹5,500++</div><p class="also-desc">DIY cocktail, salad and tiramisu stations. Live band, complimentary Prosecco, truffle boxes, macarons and spa coupons as giveaways. The full experience.</p><div class="also-btns"><a class="also-btn" href="tel:+912262221000">📞 022 6222 1000</a></div></div></div>
+    <div class="also-card"><div class="also-dot">🌊</div><div class="also-content"><div class="also-name">Bayview — Hotel Marine Plaza</div><div class="also-meta">Marine Lines · Seafront Brunch Buffet</div><p class="also-desc">Sweeping views over Marine Drive. Old Mumbai done properly — not flashy, just right. For the mom who prefers character over spectacle.</p><div class="also-btns"><a class="also-btn" href="tel:+912222851212">📞 022 2285 1212</a></div></div></div>
+  </div>
+</div>
+
+<!-- GURGAON -->
+<div class="city-panel" id="gurgaon">
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>01</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Splurge Pick</span></div><div class="r-name">threesixtyone° — The Oberoi</div><div class="r-sub">Udyog Vihar · Live Interactive Chef Stations</div><p class="r-desc">Work with their chefs to recreate your mother's favourite recipes live. One of Gurgaon's most celebrated brunch experiences. This is the splurge pick — and it earns it.</p><div class="r-footer"><a class="r-btn" href="tel:+911242451234">📞 0124 245 1234</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>02</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">1+1 Offer</span></div><div class="r-name">Culina 44 — Taj City Centre</div><div class="r-sub">Sector 44 · ₹2,550++ per guest</div><p class="r-desc">Special 1+1 brunch offer this Mother's Day. Taj quality at a format that makes the whole family feel included. Call early — it fills up fast.</p><div class="r-footer"><a class="r-btn" href="tel:+911246673000">📞 0124 667 3000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>03</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">50% off Moms</span></div><div class="r-name">Le Méridien Gurgaon</div><div class="r-sub">Delhi-Jaipur Highway · Culinary Sunshine Series</div><p class="r-desc">50% discount for all mothers, surprise goodies, innovative global menu with summer highlights. Both alcoholic and non-alcoholic buffet options available.</p><div class="r-footer"><a class="r-btn" href="tel:+911244771000">📞 0124 477 1000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>04</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">Multi-Gen</span></div><div class="r-name">Spectra — The Leela Ambience</div><div class="r-sub">DLF Phase 2 · Award-Winning All-Day Dining</div><p class="r-desc">Special brunch spread with classics and exotic highlights. Kids' experiences included — great for three-generation family tables where everyone needs to feel seen.</p><div class="r-footer"><a class="r-btn" href="tel:+911244477000">📞 0124 447 7000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>05</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">Outdoor</span><span class="r-tag sage">Organic · Peaceful</span></div><div class="r-name">Under The Neem</div><div class="r-sub">Sector 80 · Garden Setting · Farm-to-Table</div><p class="r-desc">Charming outdoor dining in lush gardens, organic ingredients from their own kitchen garden. Rustic, grounded, peaceful. For the mom who needs nature more than noise.</p><div class="r-footer"><a class="r-btn" href="tel:+919873001133">📞 +91 98730 01133</a></div></div></div></div>
+  <div class="also-wrap"><div class="also-label">Also worth it this weekend</div>
+    <div class="also-card"><div class="also-dot pink-dot">🎭</div><div class="also-content"><div class="also-name">Café G — Crowne Plaza Today Gurugram</div><div class="also-meta">Sector 29 · May 8–11 · Regional Home Chefs</div><p class="also-desc">Actual home chefs cooking Bihari, Rampuri and Kerala cuisine May 8–10. Grand brunch on May 11 with all three together. The most emotionally specific menu in the city.</p><div class="also-btns"><a class="also-btn" href="tel:+911244606000">📞 0124 460 6000</a></div></div></div>
+    <div class="also-card"><div class="also-dot">🍹</div><div class="also-content"><div class="also-name">Marièta — DLF Phase 5</div><div class="also-meta">Sector 43 · Brunch · 12–4pm · Bombay Sapphire Cocktails</div><p class="also-desc">Laid-back brunch, live music, complimentary dessert for every mom, and a curated cocktail menu. Easy, stylish, the perfect "I planned this" move.</p><div class="also-btns"><a class="also-btn" href="tel:+919899770022">📞 +91 98997 70022</a></div></div></div>
+    <div class="also-card"><div class="also-dot pink-dot">🌿</div><div class="also-content"><div class="also-name">The Glasshouse — DoubleTree Bani Square</div><div class="also-meta">Sector 50 · ₹2,500++ · 12–4pm · Personalised Pastry at Every Table</div><p class="also-desc">Interactive live food stations, gourmet pizzas, grilled dishes — and a personalised pastry with a handwritten Happy Mother's Day message at every table.</p><div class="also-btns"><a class="also-btn" href="tel:+911244741234">📞 0124 474 1234</a></div></div></div>
+  </div>
+</div>
+
+<!-- PUNE -->
+<div class="city-panel" id="pune">
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>01</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Grand</span></div><div class="r-name">Sheraton Grand Pune</div><div class="r-sub">Bund Garden Road · Buffet Brunch</div><p class="r-desc">Grand buffet spread, attentive service, variety that covers every palate. From kids to grandmothers — this one works for every kind of family table. Reliable and celebrated.</p><div class="r-footer"><a class="r-btn" href="tel:+912066011000">📞 020 6601 1000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>02</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">Artisanal</span></div><div class="r-name">The Flour Works</div><div class="r-sub">Koregaon Park · Artisanal Café</div><p class="r-desc">Artisanal breads, continental classics, warm rustic setting on Pune's most beloved street. For the mom who likes things beautiful but not fussy. Queue early — always full.</p><div class="r-footer"><a class="r-btn" href="tel:+912041201234">📞 020 4120 1234</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>03</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">JW Luxury</span></div><div class="r-name">JW Marriott Pune</div><div class="r-sub">Senapati Bapat Road · Sunday Brunch</div><p class="r-desc">JW's signature Sunday brunch energy — global spread, live stations, a dessert bar she'll linger at too long. The right amount of luxury without being intimidating.</p><div class="r-footer"><a class="r-btn" href="tel:+912066831000">📞 020 6683 1000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>04</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">Pan Asian</span></div><div class="r-name">Baan TAO — Hyatt Pune</div><div class="r-sub">Kalyani Nagar · Satays · Dim Sum · Oriental Seafood</div><p class="r-desc">Great Satays, Oriental Seafood, Dim Sum done properly. The kind of spread that keeps pulling you back for one more thing. For the mom who loves Asian food.</p><div class="r-footer"><a class="r-btn" href="tel:+912066451234">📞 020 6645 1234</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>05</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Dinner</span><span class="r-tag pink">Rooftop</span></div><div class="r-name">Zeta — Conrad Pune</div><div class="r-sub">Mangaldas Road · Fine Dining · Evening Setting</div><p class="r-desc">Rooftop setting, excellent cocktail program, dinner menu actually worth the price. For the mom who prefers evening over brunch — let her own the night.</p><div class="r-footer"><a class="r-btn" href="tel:+912067220000">📞 020 6722 0000</a></div></div></div></div>
+  <div class="also-wrap"><div class="also-label">Also worth it this weekend</div>
+    <div class="also-card"><div class="also-dot pink-dot">🍛</div><div class="also-content"><div class="also-name">Café Blu — Radisson Blu Pune</div><div class="also-meta">Kharadi · "Aai Chi Rasoi" · Maharashtrian Special Brunch</div><p class="also-desc">Authentic Maharashtrian home cooking — Puranpoli, Bharli Vangi, Shrikhand. The most soulful brunch pick in Pune this weekend by a long shot.</p><div class="also-btns"><a class="also-btn" href="tel:+912067444444">📞 020 6744 4444</a></div></div></div>
+    <div class="also-card"><div class="also-dot">☕</div><div class="also-content"><div class="also-name">German Bakery</div><div class="also-meta">Koregaon Park · Casual Brunch · No Reservation Needed</div><p class="also-desc">Granola, fresh salads, wholesome mains under a garden canopy. For the mom who'd rather sit under trees than in a hotel ballroom.</p><div class="also-btns"><a class="also-btn" href="tel:+912026145145">📞 020 2614 5145</a></div></div></div>
+    <div class="also-card"><div class="also-dot pink-dot">🥂</div><div class="also-content"><div class="also-name">Sorriso — Koregaon Park</div><div class="also-meta">Pune · Italian Fine Dining · Dinner</div><p class="also-desc">Fresh pasta, Tiramisu, great wine list. Quiet candlelight, intimate setting. Food that doesn't need to shout. One of Pune's most consistently loved dinner restaurants.</p><div class="also-btns"><a class="also-btn" href="tel:+912026052000">📞 020 2605 2000</a></div></div></div>
+  </div>
+</div>
+
+<!-- AHMEDABAD -->
+<div class="city-panel" id="ahmedabad">
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>01</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">Pre-book Required</span></div><div class="r-name">Mango — ITC Narmada</div><div class="r-sub">Judges Bungalow Road · Chef's Menu</div><p class="r-desc">ITC's signature spread — breakfast through dinner. The Chef's Menu must be pre-booked. Rich, layered, Indian-forward with Cointreau Chocolate Decadence for dessert.</p><div class="r-footer"><a class="r-btn" href="tel:+917966602424">📞 079 6660 2424</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>02</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">Family Staple</span></div><div class="r-name">The Grand Bhagwati</div><div class="r-sub">S.G. Highway · Grand Buffet</div><p class="r-desc">Ahmedabad's hospitality staple. Grand buffet with variety that pleases everyone from fussy kids to grandparents. The staff here makes you feel like guests, not numbers.</p><div class="r-footer"><a class="r-btn" href="tel:+917926857777">📞 079 2685 7777</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>03</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">City Centre</span></div><div class="r-name">Cafe Crown — Crowne Plaza</div><div class="r-sub">City Centre · All-Day Dining</div><p class="r-desc">IHG's all-day dining with consistent quality and enough variety to keep everyone happy around a multi-generational table.</p><div class="r-footer"><a class="r-btn" href="tel:+917930073000">📞 079 3007 3000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>04</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Dinner</span><span class="r-tag pink">Rooftop Views</span></div><div class="r-name">Infinity — Fortune Landmark</div><div class="r-sub">Usmanpura · Rooftop Dining</div><p class="r-desc">Rooftop dining with Ahmedabad views, warm service, confident Indian and continental menu. For the mom who prefers an intimate evening to a crowded afternoon.</p><div class="r-footer"><a class="r-btn" href="tel:+917927549999">📞 079 2754 9999</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>05</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">Heritage Lunch</span><span class="r-tag cream">Pure Vegetarian</span></div><div class="r-name">Agashiye — The House of MG</div><div class="r-sub">Lal Darwaja · Rooftop Gujarati Thali</div><p class="r-desc">Heritage rooftop Gujarati thali in the old city. Deeply cultural, extraordinarily beautiful. Ahmedabad's most soulful meal. She will remember this one for years.</p><div class="r-footer"><a class="r-btn" href="tel:+917925506946">📞 079 2550 6946</a></div></div></div></div>
+  <div class="also-wrap"><div class="also-label">Also worth it this weekend</div>
+    <div class="also-card"><div class="also-dot pink-dot">🌮</div><div class="also-content"><div class="also-name">Verandah — Hyatt Regency Ahmedabad</div><div class="also-meta">SG Highway · International Spread · Dinner</div><p class="also-desc">Confident international spread with a strong Indian base. Live stations, warm service, dessert counter she'll need two rounds of.</p><div class="also-btns"><a class="also-btn" href="tel:+917967011234">📞 079 6701 1234</a></div></div></div>
+    <div class="also-card"><div class="also-dot">🌿</div><div class="also-content"><div class="also-name">Prego — Courtyard by Marriott</div><div class="also-meta">SG Highway · Italian Fine Dining · Dinner</div><p class="also-desc">Quiet Italian dining done properly. For the Ahmedabad mom tired of the same circuit — good pasta, good wine, a good evening that actually surprises her.</p><div class="also-btns"><a class="also-btn" href="tel:+917930023000">📞 079 3002 3000</a></div></div></div>
+  </div>
+</div>
+
+<!-- GOA -->
+<div class="city-panel" id="goa">
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>01</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">The One</span><span class="r-tag sage">Brunch</span></div><div class="r-name">Wicked Liquid — Grand Hyatt Goa</div><div class="r-sub">Bambolim · Seafront · Live Music · Open Bar</div><p class="r-desc">The mother of all Sunday brunches in Goa. Flamboyant spread, sea views, upbeat live music, and live counters across Mumbai chaat, grills, Italian, Goan and more. No regrets.</p><div class="r-footer"><a class="r-btn" href="tel:+918322301234">📞 0832 230 1234</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>02</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag cream">Personal · Heritage</span></div><div class="r-name">Vivanta Goa</div><div class="r-sub">Panaji · Chef's Treasured Recipes · Live Music</div><p class="r-desc">A brunch built on the chef's own family recipes, paired with refreshing pours and enchanting live music. One of those rare spreads that actually feels personal, not assembled.</p><div class="r-footer"><a class="r-btn" href="tel:+918322417777">📞 0832 241 7777</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>03</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">50% off Moms</span><span class="r-tag sage">Pool Vibes</span></div><div class="r-name">Novotel Goa — Cocktail Brunch</div><div class="r-sub">Panjim · Pool + Bar Takeover · Live Music</div><p class="r-desc">Bar takeover, live music, pool vibes — and mothers dine at 50% off. For the mom who prefers a party over a sit-down. Good food, great energy.</p><div class="r-footer"><a class="r-btn" href="tel:+918326719000">📞 0832 671 9000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>04</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag sage">Brunch</span><span class="r-tag pink">River Views · Pool</span></div><div class="r-name">Comida — DoubleTree Hilton Goa</div><div class="r-sub">Arpora · River Mandovi Views · Infinity Pool Access</div><p class="r-desc">Views of the Mandovi and Goan hinterlands, infinity pool access, Middle-Eastern dips, regional Indian to continental mains, fabulous mocktails. A long, lazy, beautiful afternoon.</p><div class="r-footer"><a class="r-btn" href="tel:+918322479000">📞 0832 247 9000</a></div></div></div></div>
+  <div class="r-card"><div class="r-card-stripe"><div class="r-card-number"><span>05</span></div><div class="r-card-body"><div class="r-card-tags"><span class="r-tag pink">Laid-Back</span><span class="r-tag cream">Spanish Fusion</span></div><div class="r-name">Nora's Cantina</div><div class="r-sub">Siolim · Spanish Fusion · Sunday Luncheon</div><p class="r-desc">Ensalada Rustica, Shepherd's Pie, Paella Espanola, live grill stations with Mackerel Peri Peri and Arabic Kebabs, quesadilla counter. Relaxed, laughter-filled, genuinely Goa.</p><div class="r-footer"><a class="r-btn" href="tel:+919823000000">📞 Find on Instagram @norascantina</a></div></div></div></div>
+  <div class="also-wrap"><div class="also-label">Also worth it this weekend</div>
+    <div class="also-card"><div class="also-dot pink-dot">🌊</div><div class="also-content"><div class="also-name">Barbeque — Cidade de Goa</div><div class="also-meta">Vainguinim Beach · Outdoor Seaside Brunch</div><p class="also-desc">Sweeping views of Vainguinim Beach under shady trees, a live musician, chaat counter, sushi, grills and Goan fare. When the skies are blue in Goa, there's nothing like this.</p><div class="also-btns"><a class="also-btn" href="tel:+918322454545">📞 0832 245 4545</a></div></div></div>
+    <div class="also-card"><div class="also-dot">🌴</div><div class="also-content"><div class="also-name">Zest — Palolem / Agonda</div><div class="also-meta">South Goa · Beachside · Casual Lunch</div><p class="also-desc">Goa's most beloved beachside spot. Fresh fish curry, wood-fired pizza, Goan thalis. For the mom who came to Goa to actually slow down and feel it.</p><div class="also-btns"><a class="also-btn" href="tel:+919822000000">📞 Ask your resort to connect</a></div></div></div>
+  </div>
+</div>
+
+<div class="deco-divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<!-- QUOTES -->
+<div class="section-label"><span class="section-label-line"></span><span class="section-label-text">Words, When You're Out of Them</span><span class="section-label-line"></span></div>
+<div class="quotes-section">
+  <div class="quotes-header">
+    <h3>Screenshot one. Send it. 💬</h3>
+    <p>That's your whole card sorted. She deserves to hear it.</p>
+  </div>
+  <div class="quotes-scroll">
+    <div class="quote-card sage-card"><p>There is no way to be a perfect mother — and a million ways to be a good one. Today is about honouring every single one of those ways.</p><span class="q-attr">— Jill Churchill, adapted</span></div>
+    <div class="quote-card pink-card"><p>The woman who never asks for help — she's the one who always gives it. Today, give it back without being asked.</p><span class="q-attr">— WOMBS, 2026</span></div>
+    <div class="quote-card sage-card"><p>The natural state of motherhood is unselfishness. She has been living in that state without applause, every single day.</p><span class="q-attr">— Jessica Lange, adapted</span></div>
+    <div class="quote-card pink-card"><p>She stayed in every photograph and made sure everyone else looked good. This year, take the photo of her. All of her. In the frame.</p><span class="q-attr">— WOMBS, 2026</span></div>
+    <div class="quote-card sage-card"><p>Being a mother is learning about strengths you didn't know you had, and dealing with fears you didn't know existed.</p><span class="q-attr">— Linda Wooten</span></div>
+    <div class="quote-card pink-card"><p>She showed up for everyone. Changed in ways that went unnoticed. Kept going when she had every reason not to. That's worth more than one Sunday — but let's start with this one.</p><span class="q-attr">— WOMBS, 2026</span></div>
+    <div class="quote-card sage-card"><p>Behind every great woman is another great woman who called at exactly the wrong time and also made the best food you have ever eaten.</p><span class="q-attr">— Unknown</span></div>
+  </div>
+</div>
+
+<div class="deco-divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<!-- SELF-CARE -->
+<div class="section-label"><span class="section-label-line"></span><span class="section-label-text">Because Food Is Only Half of It</span><span class="section-label-line"></span></div>
+<div class="selfcare-wrap">
+  <div class="selfcare-header">
+    <h3>Book her a moment where nobody needs anything from her.</h3>
+    <p>An hour of actual quiet, real warmth, zero opinions about what she should be doing differently.</p>
+  </div>
+  <div class="selfcare-grid">
+    <div class="sc-card"><span class="sc-icon">🛁</span><h4>Spa at Home</h4><p>Therapist comes to her. Swedish, deep-tissue, or aromatherapy. She doesn't move a muscle.</p><a class="sc-btn" href="https://www.urbancompany.com/spa-luxe" target="_blank">Urban Company</a></div>
+    <div class="sc-card"><span class="sc-icon">💅</span><h4>Salon at Home</h4><p>Mani-pedi, facial, cleanup — from her favourite chair. All 7 cities covered.</p><a class="sc-btn" href="https://www.urbancompany.com/salon-at-home" target="_blank">Book Now</a></div>
+    <div class="sc-card"><span class="sc-icon">🌿</span><h4>Four Fountains Spa</h4><p>Prenatal massage available — safe, expert, restorative. Multiple cities across India.</p><a class="sc-btn" href="https://www.fourfountainsspa.com" target="_blank">Find Near You</a></div>
+    <div class="sc-card"><span class="sc-icon">✨</span><h4>Hotel Spa Add-On</h4><p>Most hotels above offer spa combos with dining. Ask when you call to book the table.</p><a class="sc-btn" href="#" onclick="alert('Ask your hotel when you call — JW, Leela, Hyatt and Marriott properties all have spa packages.')">How to Ask</a></div>
+  </div>
+</div>
+
+<!-- GIFTS -->
+<div class="section-label"><span class="section-label-line"></span><span class="section-label-text">The Gift Edit</span><span class="section-label-line"></span></div>
+<div class="gifts-wrap">
+  <div class="gifts-header">
+    <h3>She said "nothing." She lied. 🎁</h3>
+    <p>From splurge to handmade — something for every kind of love.</p>
+  </div>
+  <div class="gifts-scroll">
+    <div class="gift-card"><span class="gift-emoji">💐</span><h4>Flowers Before 9am</h4><p>Ferns N Petals, local market, or Bloom Box. Delivered before she wakes up. No excuses.</p></div>
+    <div class="gift-card pink-gift"><span class="gift-emoji">👜</span><h4>A Bag She'll Actually Use</h4><p>Not another tote. A leather pouch, structured handbag, or good weekender. Hidesign, Nappa Dori, Da Milano — solid at every price point.</p></div>
+    <div class="gift-card sage-gift"><span class="gift-emoji">💍</span><h4>Jewellery That Means Something</h4><p>A birthstone, a thin chain, a ring she'll wear every day. Misho, Zariin, or a local goldsmith. Ask what she actually wears first.</p></div>
+    <div class="gift-card pink-gift"><span class="gift-emoji">✉️</span><h4>A Handwritten Card</h4><p>Buy a beautiful card from a paper store. One honest sentence she'll keep in a drawer for twenty years. No templates. Write it yourself.</p></div>
+    <div class="gift-card sage-gift"><span class="gift-emoji">🎨</span><h4>Make It With Your Child</h4><p><strong>Clay pendant:</strong> roll, shape, paint.<br><strong>Decorated frame:</strong> pasta, dried flowers, her favourite photo.<br><strong>Recipe card:</strong> her dish, handwritten by the kids, framed.<br><strong>Photo book:</strong> Canvera or Printinkart, from ₹500.</p></div>
+    <div class="gift-card"><span class="gift-emoji">🖼️</span><h4>Put Her in the Frame</h4><p>Print and frame a photo where she's actually in it. The whole of her. Hand it to her. That's the note.</p></div>
+    <div class="gift-card pink-gift"><span class="gift-emoji">☕</span><h4>A Hamper She'd Love</h4><p>Her favourite biscuits, a good tea, a candle, a face mask. Wrap it in tissue and brown paper. The effort is the gift.</p></div>
+    <div class="gift-card sage-gift"><span class="gift-emoji">🕯️</span><h4>A Quiet Evening</h4><p>You cook. You clean. She sits with her chai and watches what she actually wants. That's the whole gift.</p></div>
+  </div>
+</div>
+
+<div class="deco-divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<!-- CONTACT FORM -->
+<div class="section-label"><span class="section-label-line"></span><span class="section-label-text">Need a Hand Planning?</span><span class="section-label-line"></span></div>
+<div class="contact-wrap">
+  <div class="contact-tag">We Got You</div>
+  <h3>Still figuring it out?<br><em>Let us help.</em></h3>
+  <p>Tell us your city, your vibe and your budget — we'll come back with a plan. Because she really, truly shouldn't have to sort this herself.</p>
+  <div class="contact-form" id="contactForm">
+    <div class="form-row">
+      <div class="form-field"><label>Your Name</label><input type="text" placeholder="Priya" id="f-name"></div>
+      <div class="form-field"><label>WhatsApp Number</label><input type="tel" placeholder="+91 98765 43210" id="f-phone"></div>
+    </div>
+    <div class="form-field"><label>City</label>
+      <select id="f-city">
+        <option value="">Select your city</option>
+        <option>Bangalore</option><option>Delhi</option><option>Mumbai</option>
+        <option>Gurgaon</option><option>Pune</option><option>Ahmedabad</option>
+        <option>Goa</option><option>Other</option>
+      </select>
+    </div>
+    <div class="form-field"><label>Who's this for?</label>
+      <select id="f-who">
+        <option value="">Select one</option>
+        <option>Planning for myself</option><option>Planning for my partner</option>
+        <option>Planning for my mom</option><option>Planning for the family</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="form-field"><label>Tell us a little more (optional)</label><textarea placeholder="Budget range, number of people, dietary needs, vibe — anything helps." id="f-note"></textarea></div>
+    <button class="form-submit" onclick="submitForm()">Send My Details — We'll Be in Touch 🌿</button>
+    <p class="form-note">We'll reach out on WhatsApp within 24 hours. No spam, ever.</p>
+  </div>
+  <div class="form-success" id="formSuccess">
+    <h4>We've got it. 🌸</h4>
+    <p>We'll be in touch on WhatsApp soon. In the meantime — enjoy the planner. You've done the hardest part: asking for help.</p>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-tag">From WOMBS</div>
+  <h3>She's been holding a lot.<br><span>We see her.</span></h3>
+  <p>WOMBS is a community and wellness brand built for women across fertility, pregnancy, and the postpartum journey. We don't just celebrate mothers once a year. But this weekend, we wanted to make sure the people who love them — and the women themselves — had everything they needed to make May 9 and 10 actually feel like her days.</p>
+  <div class="manifesto-btns">
+    <a class="manifesto-btn primary" href="https://www.instagram.com/wombscircle" target="_blank">Follow @wombscircle</a>
+    <a class="manifesto-btn secondary" href="https://allwombs.com" target="_blank">allwombs.com</a>
+  </div>
+</div>
+
+<footer>
+  Made with intention by <a href="https://www.instagram.com/wombscircle">WOMBS</a> · Bengaluru, India<br>
+  Phone numbers are best-effort — always call ahead to confirm Mother's Day special menus and availability.<br>
+  Tables fill fast. Book before Friday.
+</footer>
+
+<script>
+function showCity(city,btn){document.querySelectorAll('.city-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.city-btn').forEach(b=>b.classList.remove('active'));document.getElementById(city).classList.add('active');btn.classList.add('active');}
+function submitForm(){var n=document.getElementById('f-name').value.trim(),p=document.getElementById('f-phone').value.trim(),c=document.getElementById('f-city').value;if(!n||!p||!c){alert("Just your name, WhatsApp number and city — and we're good to go.");return;}document.getElementById('contactForm').style.display='none';document.getElementById('formSuccess').style.display='block';}
+</script>
+</body>
+</html>
